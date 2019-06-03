@@ -25,6 +25,9 @@ public interface StudentDao {
     @Delete
     void delete(Student student);
 
-    @Query("DELETE FROM student WHERE max(addDate)")
-    void deleteLast();
+    @Query("DELETE FROM student")
+    void deleteAll();
+
+    @Query("SELECT * FROM student WHERE date = (SELECT MAX(date) from student)")
+    Student selectLast();
 }

@@ -2,15 +2,20 @@ package com.example.sd_lab3.models;
 
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
+import android.arch.persistence.room.TypeConverters;
+
+import com.example.sd_lab3.database.DateConverter;
+
 import java.util.Date;
 
 @Entity
 public class Student {
 
-    @PrimaryKey
-    private long id;
+    @PrimaryKey(autoGenerate = true)
+    public long id;
 
-    private String fullName;
+    public String fullName;
 
-    private Date addDate;
+    @TypeConverters({DateConverter.class})
+    public Date date;
 }
